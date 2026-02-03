@@ -1,0 +1,5 @@
+Para ejecutar las migraciones (MIGRAR)
+npm run migration:run
+
+Para Generar archivos migrations
+npm run migration:generate --name=create_table_users
