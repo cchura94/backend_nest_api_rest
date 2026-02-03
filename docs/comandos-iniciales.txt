@@ -5,3 +5,5 @@ npm install --save @nestjs/typeorm typeorm pg
 nest generate res modules/admin/users
 
 npm install dotenv
+
+nest generate res modules/admin/roles
