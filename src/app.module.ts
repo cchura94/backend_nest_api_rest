@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './modules/admin/users/users.module';
 import { RolesModule } from './modules/admin/roles/roles.module';
 import { PermissionsModule } from './modules/admin/permissions/permissions.module';
+import { SeedModule } from './database/seeders/seed.module';
 
 @Module({
   imports: [
@@ -20,9 +21,10 @@ import { PermissionsModule } from './modules/admin/permissions/permissions.modul
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: false
     }),
+    SeedModule,
     UsersModule,
     RolesModule,
-    PermissionsModule,
+    PermissionsModule
   ],
   controllers: [AppController],
   providers: [AppService],
