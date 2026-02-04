@@ -7,6 +7,7 @@ import { UsersModule } from './modules/admin/users/users.module';
 import { RolesModule } from './modules/admin/roles/roles.module';
 import { PermissionsModule } from './modules/admin/permissions/permissions.module';
 import { SeedModule } from './database/seeders/seed.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -24,7 +25,8 @@ import { SeedModule } from './database/seeders/seed.module';
     SeedModule,
     UsersModule,
     RolesModule,
-    PermissionsModule
+    PermissionsModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],

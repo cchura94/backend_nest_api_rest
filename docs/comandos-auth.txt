@@ -1,0 +1,9 @@
+nest g module modules/auth
+nest g controller modules/auth
+nest g service modules/auth
+
+npm install bcrypt
+
+npm install --save @nestjs/jwt
+
+npm i --save class-validator class-transformer

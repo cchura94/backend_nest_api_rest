@@ -9,3 +9,6 @@ npm install dotenv
 nest generate res modules/admin/roles
 
 npm install bcrypt
+
+
+npm install --save @nestjs/swagger
