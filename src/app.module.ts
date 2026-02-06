@@ -8,6 +8,7 @@ import { RolesModule } from './modules/admin/roles/roles.module';
 import { PermissionsModule } from './modules/admin/permissions/permissions.module';
 import { SeedModule } from './database/seeders/seed.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { InventarioModule } from './modules/admin/inventario/inventario.module';
 
 @Module({
   imports: [
@@ -26,7 +27,8 @@ import { AuthModule } from './modules/auth/auth.module';
     UsersModule,
     RolesModule,
     PermissionsModule,
-    AuthModule
+    AuthModule,
+    InventarioModule
   ],
   controllers: [AppController],
   providers: [AppService],

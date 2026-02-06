@@ -1,0 +1,25 @@
+
+GET http://127.0.0.1:3000/categoria
+
+### Guardar
+POST  http://127.0.0.1:3000/categoria
+Content-Type: application/json
+
+{
+    "nombre": "ELECTRONICOS",
+    "descripcion": ""
+}
+
+### mostrar
+GET http://127.0.0.1:3000/categoria/2
+
+### Modificar
+
+PATCH http://127.0.0.1:3000/categoria/2
+Content-Type: application/json
+
+{
+    "nombre": "ELECTRONICOS MODIFICADO",
+    "descripcion": "MODIFICADO"
+}
+
