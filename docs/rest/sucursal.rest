@@ -1,0 +1,28 @@
+GET http://127.0.0.1:3000/sucursal
+
+### Guardar
+POST http://127.0.0.1:3000/sucursal
+Content-Type: application/json
+
+{
+    "nombre": "Segunda Sucursal",
+    "direccion": "Av. 123 Zona ABC",
+    "ciudad": "OTRO"
+}
+
+### Motrar sucursal
+GET http://127.0.0.1:3000/sucursal/2
+
+### modificar sucursal
+PATCH http://127.0.0.1:3000/sucursal/3
+Content-Type: application/json
+
+{
+    "nombre": "Sucursal ZONA SUR",
+    "direccion": "Av. 6 de Agosto",
+    "ciudad": "LA PAZ"
+}
+
+### eliminar
+
+DELETE http://127.0.0.1:3000/sucursal/2
