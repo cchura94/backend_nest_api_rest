@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { ProductoService } from './producto.service';
 import { CreateProductoDto } from './dto/create-producto.dto';
 import { UpdateProductoDto } from './dto/update-producto.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('producto')
 export class ProductoController {
@@ -38,5 +39,11 @@ export class ProductoController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.productoService.remove(+id);
+  }
+
+  @Post(':id/actualiza-imagen')
+  @UseInterceptors(FileInterceptor('imagen'))
+  subidaImagen(@UploadedFile() file: any, @Param('id') id: number){
+    return this.productoService.subidaImagen(file, id);
   }
 }

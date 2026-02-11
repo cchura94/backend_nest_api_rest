@@ -1,0 +1,33 @@
+### Guardar
+POST http://127.0.0.1:3000/producto
+Content-Type: application/json
+
+{
+  "nombre": "ZAPATO",
+  "descripcion": "Zapato de Cuero",
+  "unidad_medida": "unidad",
+  "marca": "TEST",
+  "precio_venta": "199.98",
+  "estado": true,
+  "categoria": 1
+}
+
+### GET Listar
+
+GET http://127.0.0.1:3000/producto?page=1&limit=10&search=
+
+### mostrar por id
+GET http://127.0.0.1:3000/producto/4
+
+### Modiifcar
+PATCH http://127.0.0.1:3000/producto/4
+Content-Type: application/json
+
+{
+  "nombre": "ZAPATO MODIFICADO",
+  "descripcion": "Zapato de Cuero modificado",
+  "unidad_medida": "unidad",
+  "marca": "TEST",
+  "precio_venta": "199.98"
+}
+

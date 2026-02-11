@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProductoDto } from './dto/create-producto.dto';
 import { UpdateProductoDto } from './dto/update-producto.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -25,6 +25,30 @@ export class ProductoService {
     return this.productoRepository.save(producto);
   }
 
+  async subidaImagen(file: any, id:number){
+
+    // validar
+    const valid = ['image/jpeg', 'image/png', 'image/jpg'];
+    if(!valid.includes(file.mimetype)){
+      throw new BadRequestException('Formato Invalido');
+    }
+
+    // validar el tamaño del archivo
+    const maxSize = 5 * 1024*1024;
+
+    if(file.size > maxSize){
+      throw new BadRequestException('El archivo es muy grande');
+    }
+
+    const producto = await this.findOne(id);
+    producto.imagen = file.path;
+    this.productoRepository.save(producto);
+
+    return {message: 'Archivo subido', filepath: file.path}
+
+
+  }
+
   // paginación
   async findAll(page: number=1, limit:number=10, search:string='', sortBy: string='id', order: 'ASC'|'DESC' = 'DESC', almacen:number=0, activo: boolean = true) {
     const queryBuilder = this.productoRepository.createQueryBuilder('producto')
@@ -34,7 +58,7 @@ export class ProductoService {
 
                   // busqueda
                   if(search){
-                    queryBuilder.andWhere('(producto.nombre ILIKE :search OR producto.marca ILIKE :search', {search: `%${search}%`})
+                    queryBuilder.andWhere('(producto.nombre ILIKE :search OR producto.marca ILIKE :search)', {search: `%${search}%`})
                   }
 
                   if(almacen && almacen > 0){
@@ -71,11 +95,26 @@ export class ProductoService {
     return producto;
   }
 
-  update(id: number, updateProductoDto: UpdateProductoDto) {
-    return `This action updates a #${id} producto`;
+  async update(id: number, updateProductoDto: UpdateProductoDto) {
+    const producto = await this.findOne(id)
+    if(updateProductoDto.categoria){
+      const categoria = await this.categoriaRepository.findOne({where: {id: updateProductoDto.categoria}});
+      if(!categoria){
+        throw new NotFoundException('Categoria no encontrada');
+      }
+      producto.categoria = categoria;
+    }
+
+    Object.assign(producto, updateProductoDto)
+
+    return this.productoRepository.save(producto);
+
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} producto`;
+  async remove(id: number) {
+    const producto = await this.findOne(id);
+    producto.estado = false;
+    await this.productoRepository.save(producto);
+    return {message: "Producto inactivado"}
   }
 }
