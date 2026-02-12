@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  backend_nest_inventario:
+    container_name: backend_nest_inventario
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "5000:3000"
+    depends_on:
+      - postgres_nest
+  
+  postgres_nest:
+    container_name: postgres_nest
+    image: postgres:15-alpine
+    restart: always
+    ports:
+      - "5555:5432"
+    env_file:
+      - .env
+    volumes:
+      - postgres_data_nest:/var/lib/postgresql/data
+
+volumes:
+  postgres_data_nest:
+    
