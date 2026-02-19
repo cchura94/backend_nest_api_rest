@@ -1,0 +1,42 @@
+
+### Listar proveedor
+GET http://127.0.0.1:3000/cliente-proveedor
+
+### Guardar Proveedor
+POST  http://127.0.0.1:3000/cliente-proveedor
+Content-Type: application/json
+
+{
+    "tipo": "proveedor",
+    "razon_social": "ASUS SRL",
+    "identificacion": "986453321",
+    "telefono": "2354653",
+    "direccion": "Av ABC. Zona 123",
+    "correo": "asus@mail.net",
+    "estado": true
+}
+
+### Guardar Cliente
+POST  http://127.0.0.1:3000/cliente-proveedor
+Content-Type: application/json
+
+{
+    "tipo": "cliente",
+    "razon_social": "Juan Perez",
+    "identificacion": "987653",
+    "estado": true
+}
+
+### mostrar
+GET http://127.0.0.1:3000/categoria/2
+
+### Modificar
+
+PATCH http://127.0.0.1:3000/categoria/2
+Content-Type: application/json
+
+{
+    "nombre": "ELECTRONICOS MODIFICADO",
+    "descripcion": "MODIFICADO"
+}
+

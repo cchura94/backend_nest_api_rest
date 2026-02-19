@@ -1,0 +1,29 @@
+GET http://127.0.0.1:3000/almacen
+
+### Guardar
+POST http://127.0.0.1:3000/almacen
+Content-Type: application/json
+
+{
+    "nombre": "ALMACEN 1",
+    "codigo": "ALM-001",
+    "descripcion": "Almacen Central",
+    "sucursal": 1
+}
+
+### Motrar sucursal
+GET http://127.0.0.1:3000/sucursal/2
+
+### modificar sucursal
+PATCH http://127.0.0.1:3000/sucursal/3
+Content-Type: application/json
+
+{
+    "nombre": "Sucursal ZONA SUR",
+    "direccion": "Av. 6 de Agosto",
+    "ciudad": "LA PAZ"
+}
+
+### eliminar
+
+DELETE http://127.0.0.1:3000/sucursal/2

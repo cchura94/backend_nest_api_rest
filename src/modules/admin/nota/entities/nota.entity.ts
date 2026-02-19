@@ -9,7 +9,7 @@ export class Nota {
     @PrimaryGeneratedColumn()
     id:number;
 
-    @Column({unique: true})
+    @Column()
     fecha: Date;
 
     @Column()

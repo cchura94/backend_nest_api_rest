@@ -1,0 +1,38 @@
+POST http://127.0.0.1:3000/nota
+Content-Type: application/json
+Accept: application/json
+
+{
+    "fecha": "2026-02-22",
+    "tipo_nota": "compra",
+    "cliente_id": 2,
+    "user_id": "7bcd9223-01b8-4d57-9a31-4a2d1aeedd30",
+    "estado_nota": "En Proceso",
+    "observaciones": "NINGUNO",
+    "movimientos": [
+        {"producto_id": 1, "almacen_id": 1, "cantidad": 50, "tipo_movimiento": "ingreso", "precio_unitario_compra": "250.00", "precio_unitario_venta": "0.00", "observaciones": "NINGUNO"},
+        {"producto_id": 2, "almacen_id": 1, "cantidad": 25, "tipo_movimiento": "ingreso", "precio_unitario_compra": "150.00", "precio_unitario_venta": "0.00", "observaciones": "NINGUNO"}
+    ]
+}
+
+### Venta
+POST http://127.0.0.1:3000/nota
+Content-Type: application/json
+Accept: application/json
+
+{
+    "fecha": "2026-02-25",
+    "tipo_nota": "venta",
+    "cliente_id": 3,
+    "user_id": "7bcd9223-01b8-4d57-9a31-4a2d1aeedd30",
+    "estado_nota": "En Proceso",
+    "observaciones": "NINGUNO",
+    "movimientos": [
+        {"producto_id": 1, "almacen_id": 1, "cantidad": 5, "tipo_movimiento": "salida", "precio_unitario_compra": "0.00", "precio_unitario_venta": "500.00", "observaciones": "NINGUNO"},
+        {"producto_id": 2, "almacen_id": 1, "cantidad": 5, "tipo_movimiento": "salida", "precio_unitario_compra": "0.00", "precio_unitario_venta": "550.90", "observaciones": "NINGUNO"}
+    ]
+}
+
+
+### Lista de Notas
+GET http://127.0.0.1:3000/nota
