@@ -1,7 +1,20 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
+  Header,
+  Res,
+} from '@nestjs/common';
 import { NotaService } from './nota.service';
 import { CreateNotaDto } from './dto/create-nota.dto';
 import { UpdateNotaDto } from './dto/update-nota.dto';
+import { FiltroNotaDto } from './dto/filtro-nota.dto';
+import type { Response } from 'express';
 
 @Controller('nota')
 export class NotaController {
@@ -13,8 +26,13 @@ export class NotaController {
   }
 
   @Get()
-  findAll() {
-    return this.notaService.findAll();
+  findAll(@Query() filtroDto: FiltroNotaDto) {
+    return this.notaService.findAll(filtroDto);
+  }
+
+  @Get(':id/pdf')
+  async generarPdf3(@Param('id') id: string, @Res() res: Response) {
+    return this.notaService.generarPdfNotaPdfkitEstilizado(+id, res);
   }
 
   @Get(':id')

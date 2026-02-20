@@ -35,4 +35,4 @@ Accept: application/json
 
 
 ### Lista de Notas
-GET http://127.0.0.1:3000/nota
+GET http://127.0.0.1:3000/nota?page=1&limit=3&user_id=7bcd9223-01b8-4d57-9a31-4a2d1aeedd30
